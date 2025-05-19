@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人简历</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#FF7D00',
+            dark: '#1D2129',
+            light: '#F2F3F5',
+            accent: '#722ED1',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .card-effect {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+      .card-effect:hover {
+        box-shadow: 0 10px 30px rgba(22, 93, 255, 0.15);
+        transform: translateY(-5px);
+      }
+      .input-focus {
+        transition: all 0.2s ease;
+      }
+      .input-focus:focus {
+        border-color: theme('colors.primary');
+        box-shadow: 0 0 0 3px theme('colors.primary/20');
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .gradient-text {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(to right, theme('colors.primary'), theme('colors.accent'));
+      }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-inter">
+  <!-- 背景装饰 -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-accent/5"></div>
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 py-12 relative z-10">
+    <!-- 标题区域 -->
+    <header class="text-center mb-12">
+      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4 gradient-text">
+        <i class="fa fa-user-circle mr-3"></i>个人简历
+      </h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">展示您的专业形象，开启职业新篇章</p>
+    </header>
+    
+    <!-- 主要内容 -->
+    <main class="max-w-5xl mx-auto space-y-8">
+      <!-- 基本信息卡片 -->
+      <section class="bg-white rounded-2xl overflow-hidden card-effect">
+        <div class="bg-dark p-6 text-white">
+          <h2 class="text-2xl font-bold flex items-center">
+            <i class="fa fa-id-card-o mr-3 text-xl"></i>基本信息
+          </h2>
+        </div>
+        
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 左侧表单 -->
+          <div class="space-y-6">
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="name">
+                <i class="fa fa-user text-primary mr-2"></i>姓名
+              </label>
+              <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请输入姓名" required>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="gender">
+                <i class="fa fa-venus-mars text-primary mr-2"></i>性别
+              </label>
+              <select id="gender" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" required>
+                <option value="">请选择</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="age">
+                <i class="fa fa-calendar text-primary mr-2"></i>年龄
+              </label>
+              <input type="number" id="age" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请输入年龄" min="18" max="100" required>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="hometown">
+                <i class="fa fa-map-marker text-primary mr-2"></i>籍贯
+              </label>
+              <input type="text" id="hometown" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请输入籍贯" required>
+            </div>
+          </div>
+          
+          <!-- 右侧表单 -->
+          <div class="space-y-6">
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="phone">
+                <i class="fa fa-phone text-primary mr-2"></i>联系电话
+              </label>
+              <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请输入手机号码" pattern="[0-9]{11}" required>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="email">
+                <i class="fa fa-envelope text-primary mr-2"></i>电子邮箱
+              </label>
+              <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请输入邮箱" required>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="photo">
+                <i class="fa fa-camera text-primary mr-2"></i>照片
+              </label>
+              <input type="file" id="photo" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" accept="image/*" required>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="health">
+                <i class="fa fa-heartbeat text-primary mr-2"></i>健康状况
+              </label>
+              <select id="health" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" required>
+                <option value="">请选择</option>
+                <option value="良好">良好</option>
+                <option value="一般">一般</option>
+                <option value="较差">较差</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 教育背景卡片 -->
+      <section class="bg-white rounded-2xl overflow-hidden card-effect">
+        <div class="bg-gradient-to-r from-primary to-blue-700 p-6 text-white">
+          <h2 class="text-2xl font-bold flex items-center">
+            <i class="fa fa-graduation-cap mr-3 text-xl"></i>教育背景
+          </h2>
+        </div>
+        
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="education">
+              <i class="fa fa-graduation-cap text-primary mr-2"></i>学历
+            </label>
+            <select id="education" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" required>
+              <option value="">请选择</option>
+              <option value="高中">高中</option>
+              <option value="大专">大专</option>
+              <option value="本科">本科</option>
+              <option value="硕士">硕士</option>
+              <option value="博士">博士</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="major">
+              <i class="fa fa-book text-primary mr-2"></i>专业
+            </label>
+            <select id="major" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" required>
+              <option value="">请选择</option>
+              <option value="计算机科学与技术">计算机科学与技术</option>
+              <option value="软件工程">软件工程</option>
+              <option value="网络工程">网络工程</option>
+              <option value="数据科学与大数据技术">数据科学与大数据技术</option>
+              <option value="人工智能">人工智能</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="graduated-school">
+              <i class="fa fa-university text-primary mr-2"></i>毕业院校
+            </label>
+            <select id="graduated-school" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" required>
+              <option value="">请选择</option>
+              <option value="清华大学">清华大学</option>
+              <option value="北京大学">北京大学</option>
+              <option value="复旦大学">复旦大学</option>
+              <option value="浙江大学">浙江大学</option>
+              <option value="上海交通大学">上海交通大学</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="graduation-date">
+              <i class="fa fa-calendar-check-o text-primary mr-2"></i>毕业时间
+            </label>
+            <input type="date" id="graduation-date" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" required>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 求职意向卡片 -->
+      <section class="bg-white rounded-2xl overflow-hidden card-effect">
+        <div class="bg-gradient-to-r from-secondary to-orange-700 p-6 text-white">
+          <h2 class="text-2xl font-bold flex items-center">
+            <i class="fa fa-briefcase mr-3 text-xl"></i>求职意向
+          </h2>
+        </div>
+        
+        <div class="p-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="job-intention">
+              <i class="fa fa-search text-secondary mr-2"></i>求职意向
+            </label>
+            <select id="job-intention" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" multiple required>
+              <option value="">请选择</option>
+              <option value="前端开发">前端开发</option>
+              <option value="后端开发">后端开发</option>
+              <option value="全栈开发">全栈开发</option>
+              <option value="UI/UX设计">UI/UX设计</option>
+              <option value="测试工程师">测试工程师</option>
+              <option value="产品经理">产品经理</option>
+            </select>
+          </div>
+          
+          <div class="mt-6">
+            <label class="block text-gray-700 font-medium mb-2">
+              <i class="fa fa-certificate text-secondary mr-2"></i>技能证书
+            </label>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">CET-4</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">CET-6</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">计算机二级</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">Java认证</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">Web前端认证</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">其他</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <label class="block text-gray-700 font-medium mb-2">
+              <i class="fa fa-paint-brush text-secondary mr-2"></i>个人特长与爱好
+            </label>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">编程</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">阅读</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">运动</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">音乐</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">绘画</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded">
+                <span class="ml-2 text-gray-700">其他</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 项目经历和自我评价卡片 -->
+      <section class="bg-white rounded-2xl overflow-hidden card-effect">
+        <div class="bg-gradient-to-r from-accent to-purple-700 p-6 text-white">
+          <h2 class="text-2xl font-bold flex items-center">
+            <i class="fa fa-folder-open mr-3 text-xl"></i>项目与评价
+          </h2>
+        </div>
+        
+        <div class="p-6 space-y-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="project-experience">
+              <i class="fa fa-folder-open text-accent mr-2"></i>项目经历
+            </label>
+            <textarea id="project-experience" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请描述您的项目经历..." required></textarea>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2" for="self-evaluation">
+              <i class="fa fa-user-circle text-accent mr-2"></i>自我评价
+            </label>
+            <textarea id="self-evaluation" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 input-focus" placeholder="请简要评价您自己..." required></textarea>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 按钮区域 -->
+      <div class="flex justify-center space-x-4">
+        <button id="submit-btn" class="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl flex items-center">
+          <i class="fa fa-paper-plane mr-2"></i>提交简历
+        </button>
+        <button id="reset-btn" class="px-8 py-4 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg shadow transition-all hover:-translate-y-1 hover:shadow-md flex items-center">
+          <i class="fa fa-refresh mr-2"></i>重置
+        </button>
+      </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="mt-12 text-center text-gray-500 text-sm">
+      <p>© 2023 个人简历系统 · 精心设计</p>
+    </footer>
+  </div>
+  
+  <script>
+    // 为所有输入元素添加动画效果
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.classList.add('scale-105');
+        input.parentElement.style.transition = 'all 0.3s ease';
+      });
+      
+      input.addEventListener('blur', () => {
+        input.parentElement.classList.remove('scale-105');
+      });
+    });
+    
+    // 提交按钮动画
+    document.getElementById('submit-btn').addEventListener('click', function() {
+      this.classList.add('animate-pulse');
+      
+      // 模拟表单提交
+      setTimeout(() => {
+        alert('简历提交成功！');
+        this.classList.remove('animate-pulse');
+      }, 1000);
+    });
+    
+    // 重置按钮功能
+    document.getElementById('reset-btn').addEventListener('click', function() {
+      document.querySelectorAll('input, select, textarea').forEach(el => {
+        if (el.type === 'checkbox' || el.type === 'radio') {
+          el.checked = false;
+        } else {
+          el.value = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
